@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ZFThemeView">
+        <attr name="zf_background" format="string"></attr>
+        <attr name="zf_image" format="string"></attr>
+        <attr name="zf_text_color" format="string"></attr>
+        <attr name="zf_text_hintColor" format="string"></attr>
+    </declare-styleable>
+</resources>

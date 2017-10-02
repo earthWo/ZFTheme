@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme>
+    <item name="background" format="colorInt">#512212</item>
+    <item name="image" format="drawable">b</item>
+
+    <item name="textcolor" format="color">colorPrimary</item>
+</theme>

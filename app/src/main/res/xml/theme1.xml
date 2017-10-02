@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme>
+    <item name="background" format="colorInt">#456789</item>
+
+    <item name="image" format="drawable">a</item>
+
+    <item name="textcolor" format="colorInt">#990000</item>
+</theme>

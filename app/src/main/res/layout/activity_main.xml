@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <win.whitelife.ZFThemeLibrary.view.ZFFrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="right"
+        app:zf_background="background"/>
+
+    <win.whitelife.ZFThemeLibrary.view.ZFView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:zf_background="background"
+         />
+
+
+    <win.whitelife.ZFThemeLibrary.view.ZFImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:zf_image="image"
+        />
+
+
+    <win.whitelife.ZFThemeLibrary.view.ZFTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="测试文字"
+        app:zf_text_color="textcolor"/>
+
+    <win.whitelife.ZFThemeLibrary.view.ZFEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="测试hint文字"
+        app:zf_text_hintColor="textcolor"/>
+
+    <win.whitelife.ZFThemeLibrary.view.ZFButtonView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:zf_background="background"
+        android:onClick="change"/>
+
+
+
+</LinearLayout>
