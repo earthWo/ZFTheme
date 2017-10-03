@@ -1,5 +1,6 @@
 package whitelife.win.zftheme;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,5 +23,10 @@ public class MainActivity extends AppCompatActivity {
         }else{
             ZFTheme.get().updateTheme(R.xml.theme1);
         }
+    }
+
+    public void jump(View v){
+        Intent intent=new Intent(this,SActivity.class);
+        startActivity(intent);
     }
 }

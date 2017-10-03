@@ -41,8 +41,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:zf_background="background"
+        android:text="换主题"
+        android:gravity="center"
         android:onClick="change"/>
 
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="跳转到下一页"
+        android:onClick="jump"/>
 
 </LinearLayout>

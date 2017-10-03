@@ -2,12 +2,35 @@
 android主题工具
 
 ZFTheme是一款是android换主题框架。目前支持替换xml实现换肤，支持color和drawable。
-### 四种情况
-<attr name="zf_background" format="string"></attr>//设置背景
-<attr name="zf_image" format="string"></attr>//设置image src
-<attr name="zf_text_color" format="string"></attr>设置text 颜色
-<attr name="zf_text_hintColor" format="string"></attr>设置 texthint 颜色
+
+### 效果图：
+
+![](http://7xjrms.com1.z0.glb.clouddn.com/SM-G9500_20171003143102_1.gif)
+
+### 四种方式
+zf_background:设置背景
+zf_image:设置image src
+zf_text_color:设置text 颜色
+zf_text_hintColor:设置 texthint 颜色
 ### 使用方法：
+
+#### 导入方法
+
+Gradle:
+
+```compile 'win.whitelife.ZFThemeLibrary:library:1.0'```
+
+Maven:
+
+```
+<dependency>
+  <groupId>win.whitelife.ZFThemeLibrary</groupId>
+  <artifactId>library</artifactId>
+  <version>1.0</version>
+  <type>pom</type>
+</dependency>
+```
+
 #### 初始化
 ZFTheme.init(this,R.drawable.class,R.color.class,R.xml.theme1);
 设置drawable的class，color的class，设置初始的xml。
