@@ -2,13 +2,17 @@ package win.whitelife.ZFThemeLibrary.parse;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import win.whitelife.ZFThemeLibrary.R;
 import win.whitelife.ZFThemeLibrary.inteface.FormatTypes;
 
 /**
@@ -16,6 +20,74 @@ import win.whitelife.ZFThemeLibrary.inteface.FormatTypes;
  */
 
 public class ThemeHelper {
+
+
+    /**
+     * 解析背景
+     * @param context
+     * @param attrs
+     * @return
+     */
+    public static String encodeBackground(Context context, @Nullable AttributeSet attrs){
+        String background=null;
+        TypedArray a=context.obtainStyledAttributes(attrs, R.styleable.ZFThemeView);
+        if(a.hasValue(R.styleable.ZFThemeView_zf_background)){
+            background= a.getString(R.styleable.ZFThemeView_zf_background);
+        }
+        a.recycle();
+        return background;
+    }
+
+
+    /**
+     * 解析文字颜色
+     * @param context
+     * @param attrs
+     * @return
+     */
+    public static String encodeTextColor(Context context, @Nullable AttributeSet attrs){
+        String textColorSrc=null;
+        TypedArray a=context.obtainStyledAttributes(attrs, R.styleable.ZFThemeView);
+        if(a.hasValue(R.styleable.ZFThemeView_zf_text_color)){
+            textColorSrc=a.getString(R.styleable.ZFThemeView_zf_text_color);
+        }
+        a.recycle();
+        return textColorSrc;
+    }
+
+
+    /**
+     * 解析图片
+     * @param context
+     * @param attrs
+     * @return
+     */
+    public static String encodeImageSrc(Context context, @Nullable AttributeSet attrs){
+        String imageSrc=null;
+        TypedArray a=context.obtainStyledAttributes(attrs, R.styleable.ZFThemeView);
+        if(a.hasValue(R.styleable.ZFThemeView_zf_image)){
+            imageSrc=a.getString(R.styleable.ZFThemeView_zf_image);
+        }
+        a.recycle();
+        return imageSrc;
+    }
+
+
+    /**
+     * 解析hint颜色
+     * @param context
+     * @param attrs
+     * @return
+     */
+    public static String encodeTextHintColor(Context context, @Nullable AttributeSet attrs){
+        String textHintColorSrc=null;
+        TypedArray a=context.obtainStyledAttributes(attrs, R.styleable.ZFThemeView);
+        if(a.hasValue(R.styleable.ZFThemeView_zf_text_hintColor)){
+            textHintColorSrc=a.getString(R.styleable.ZFThemeView_zf_text_hintColor);
+        }
+        a.recycle();
+        return textHintColorSrc;
+    }
 
 
     /**

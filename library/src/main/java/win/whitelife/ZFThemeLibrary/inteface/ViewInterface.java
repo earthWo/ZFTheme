@@ -1,8 +1,5 @@
 package win.whitelife.ZFThemeLibrary.inteface;
 
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
 
 /**
  * view注册接口
@@ -11,12 +8,6 @@ import android.util.AttributeSet;
 
 public interface ViewInterface {
 
-    /**
-     * 解析配置的参数
-     * @param context
-     * @param attrs
-     */
-    void attr(Context context, @Nullable AttributeSet attrs);
 
     /**
      * 注册view

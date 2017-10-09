@@ -1,11 +1,8 @@
 package win.whitelife.ZFThemeLibrary.view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-
-import win.whitelife.ZFThemeLibrary.R;
 import win.whitelife.ZFThemeLibrary.inteface.BackgroundInterface;
 import win.whitelife.ZFThemeLibrary.inteface.TextColorHintInterface;
 import win.whitelife.ZFThemeLibrary.inteface.TextColorInterface;
@@ -45,16 +42,9 @@ public class ZFEditText extends android.support.v7.widget.AppCompatEditText impl
 
 
     public void attr(Context context, @Nullable AttributeSet attrs){
-        TypedArray a=context.obtainStyledAttributes(attrs,R.styleable.ZFThemeView);
-        if(a.hasValue(R.styleable.ZFThemeView_zf_background)){
-            mBackground=a.getString(R.styleable.ZFThemeView_zf_background);
-        }
-        if(a.hasValue(R.styleable.ZFThemeView_zf_text_color)){
-            textColorSrc=a.getString(R.styleable.ZFThemeView_zf_text_color);
-        }
-        if(a.hasValue(R.styleable.ZFThemeView_zf_text_hintColor)){
-            textHintColorSrc=a.getString(R.styleable.ZFThemeView_zf_text_hintColor);
-        }
+        mBackground=ThemeHelper.encodeBackground(context,attrs);
+        textColorSrc=ThemeHelper.encodeTextColor(context,attrs);
+        textHintColorSrc=ThemeHelper.encodeTextHintColor(context,attrs);
         themeObserver=ZFThemeObserver.getInstance(context.getApplicationContext());
     }
 

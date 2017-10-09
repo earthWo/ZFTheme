@@ -18,7 +18,7 @@ zf_text_hintColor:设置 texthint 颜色
 
 Gradle:
 
-```compile 'win.whitelife.ZFThemeLibrary:library:1.0'```
+```compile 'win.whitelife.ZFThemeLibrary:library:1.0.1'```
 
 Maven:
 
@@ -26,7 +26,7 @@ Maven:
 <dependency>
   <groupId>win.whitelife.ZFThemeLibrary</groupId>
   <artifactId>library</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -61,3 +61,50 @@ ZFTheme.init(this,R.drawable.class,R.color.class,R.xml.theme1);
 ```
 ZFTheme.get().updateTheme(R.xml.theme2);
 ```
+
+#### 自定义View
+
+自定义View如果需要变化背景，则需要实现`BackgroundInterface`接口。在该View中，需要解析设置的背景颜色：
+
+```
+mBackground=ThemeHelper.encodeBackground(context,attrs);
+```
+
+同时实现`backgroundUpdate`方法。
+
+```
+ThemeHelper.backgroundParse(getContext().getApplicationContext(),this,mBackground);
+```
+
+在View显示和消失时需要注册该View：
+
+```
+ @Override
+    public void register() {
+        themeObserver.registerView(this);
+    }
+
+    @Override
+    public void unRegister() {
+        themeObserver.unRegisterView(this);
+    }
+```
+
+提供的实现接口：
+
+`BackgroundInterface`：背景变化
+
+`ImageInterface`:图片变化
+
+`TextColorInterface`:文字颜色变化
+
+`TextColorHintInterface`:文字的hint颜色变化
+
+
+
+
+
+
+
+
+

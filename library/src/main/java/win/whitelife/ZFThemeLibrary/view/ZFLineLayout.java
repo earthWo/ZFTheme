@@ -1,12 +1,9 @@
 package win.whitelife.ZFThemeLibrary.view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-
-import win.whitelife.ZFThemeLibrary.R;
 import win.whitelife.ZFThemeLibrary.inteface.BackgroundInterface;
 import win.whitelife.ZFThemeLibrary.parse.ThemeHelper;
 import win.whitelife.ZFThemeLibrary.parse.ZFThemeObserver;
@@ -37,10 +34,7 @@ public class ZFLineLayout extends LinearLayout implements BackgroundInterface {
 
 
     public void attr(Context context, @Nullable AttributeSet attrs){
-        TypedArray a=context.obtainStyledAttributes(attrs,R.styleable.ZFThemeView);
-        if(a.hasValue(R.styleable.ZFThemeView_zf_background)){
-            mBackground=a.getString(R.styleable.ZFThemeView_zf_background);
-        }
+        mBackground=ThemeHelper.encodeBackground(context,attrs);
         themeObserver=ZFThemeObserver.getInstance(context.getApplicationContext());
     }
 
