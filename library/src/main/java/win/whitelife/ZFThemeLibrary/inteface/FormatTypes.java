@@ -12,4 +12,6 @@ public @interface FormatTypes {
     String COLOR="color";
 
     String COLOR_INT="colorInt";
+
+    String FILE="file";
 }

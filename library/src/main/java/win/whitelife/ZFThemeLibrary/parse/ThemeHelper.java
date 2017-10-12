@@ -107,6 +107,8 @@ public class ThemeHelper {
             drawBackgroundRes(view, DrawableParse.getInstance(context).parseDrawableFromDrawable(drawableValue.getValue()));
         }else if(FormatTypes.COLOR.equals(drawableValue.getFormat())){
             drawBackgroundRes(view, DrawableParse.getInstance(context).parseDrawableFromColor(drawableValue.getValue()));
+        }else if(FormatTypes.FILE.equals(drawableValue.getFormat())){
+            drawBackground(view, DrawableParse.getInstance(context).parseDrawableFile(drawableValue.getValue()));
         }
     }
 
@@ -123,12 +125,15 @@ public class ThemeHelper {
         }
         DrawableValue drawableValue= ZFThemeXmlParse.getInstance(context).parseDrawable(image);
         if(FormatTypes.COLOR_INT.equals(drawableValue.getFormat())){
-            drawImage(imageView, DrawableParse.getInstance(context).parseDrawableFromColorInt(drawableValue.getValue()));
+            drawImage(imageView, DrawableParse.getInstance(context).parseDrawableColor(drawableValue.getValue()));
         }else if(FormatTypes.DRAWABLE.equals(drawableValue.getFormat())){
             drawImageRes(imageView, DrawableParse.getInstance(context).parseDrawableFromDrawable(drawableValue.getValue()));
         }else if(FormatTypes.COLOR.equals(drawableValue.getFormat())){
             drawImageRes(imageView, DrawableParse.getInstance(context).parseDrawableFromColor(drawableValue.getValue()));
+        }else if(FormatTypes.FILE.equals(drawableValue.getFormat())){
+            drawImage(imageView, DrawableParse.getInstance(context).parseDrawableFile(drawableValue.getValue()));
         }
+
     }
 
 
@@ -156,6 +161,13 @@ public class ThemeHelper {
         }
     }
 
+    public static <T extends View>void drawBackground(T view,int color){
+        if(view!=null&&color!=0){
+            view.setBackgroundColor(color);
+        }
+    }
+
+
     public static <T extends View>void drawBackground(T view,Drawable drawable){
         if(view!=null&&drawable!=null){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -163,7 +175,6 @@ public class ThemeHelper {
             }else{
                 view.setBackgroundDrawable(drawable);
             }
-            drawable.setCallback(null);
         }
     }
 
@@ -183,7 +194,7 @@ public class ThemeHelper {
 
     public static  <T extends ImageView>void drawImageRes(T view,int res){
         if(view!=null&&res!=0){
-            view.setBackgroundResource(res);
+            view.setImageResource(res);
         }
     }
 

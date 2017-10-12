@@ -2,6 +2,8 @@ package win.whitelife.ZFThemeLibrary;
 
 import android.content.Context;
 import android.support.annotation.XmlRes;
+
+import win.whitelife.ZFThemeLibrary.config.Theme;
 import win.whitelife.ZFThemeLibrary.parse.ZFThemeObserver;
 import win.whitelife.ZFThemeLibrary.config.ZFThemeConfig;
 import win.whitelife.ZFThemeLibrary.parse.ConfigInterface;
@@ -29,6 +31,7 @@ public class ZFTheme {
     private ObserverInterface zfThemeObserver;
 
 
+
     private ZFTheme(Context context){
         zfThemeConfig=ZFThemeConfig.getInstance();
         zfThemeParse= ZFThemeXmlParse.getInstance(context);
@@ -39,21 +42,39 @@ public class ZFTheme {
     /**
      * 初始化所有的类
      * @param context
-     * @param drawableClass
-     * @param colorClass
      * @param defaultXml
      */
-    public static void init(Context context,Class drawableClass,Class colorClass,int defaultXml){
+    public static void init(Context context,int defaultXml){
         mInstance=instance(context);
         mInstance.zfThemeConfig.setXml(defaultXml);
         mInstance.zfThemeParse.inflate(defaultXml);
-        mInstance.drawableParse.setColorClass(colorClass).setDrawableClass(drawableClass);
+        try {
+            Class<?> clazzDrawable = Class.forName(context.getPackageName() + ".R$drawable");
+            Class<?> clazzColor = Class.forName(context.getPackageName() + ".R$color");
+            mInstance.drawableParse.setColorClass(clazzColor).setDrawableClass(clazzDrawable);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void init(Context context,String themeName){
+        mInstance=instance(context);
+        mInstance.zfThemeConfig.setXml(themeName);
+        mInstance.zfThemeParse.inflate(themeName);
+        try {
+            Class<?> clazzDrawable = Class.forName(context.getPackageName() + ".R$drawable");
+            Class<?> clazzColor = Class.forName(context.getPackageName() + ".R$color");
+            mInstance.drawableParse.setColorClass(clazzColor).setDrawableClass(clazzDrawable);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ZFTheme get(){
         return mInstance;
     }
-
 
 
     private static ZFTheme instance(Context context){
@@ -69,9 +90,17 @@ public class ZFTheme {
 
 
     public void updateTheme(@XmlRes int res) {
-        if(zfThemeConfig.getXml()!=res){
+        if(res!=0){
             zfThemeConfig.setXml(res);
             zfThemeParse.inflate(res);
+        }
+        zfThemeObserver.updateTheme();
+    }
+
+    public void updateTheme(String themeName) {
+        if(themeName!=null){
+            zfThemeConfig.setXml(themeName);
+            zfThemeParse.inflate(themeName);
         }
         zfThemeObserver.updateTheme();
     }
@@ -80,9 +109,9 @@ public class ZFTheme {
         zfThemeConfig.setXml(currentXml);
     }
 
-    public int getXml() {
-        return zfThemeConfig.getXml();
-    }
+    public Theme getTheme() {
+        return zfThemeConfig.getTheme();
 
+    }
 
 }

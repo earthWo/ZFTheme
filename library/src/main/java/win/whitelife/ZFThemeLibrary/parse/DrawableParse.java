@@ -4,9 +4,12 @@ package win.whitelife.ZFThemeLibrary.parse;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import java.io.File;
 import java.lang.reflect.Field;
 
 import win.whitelife.ZFThemeLibrary.ZFTheme;
@@ -25,22 +28,21 @@ public class DrawableParse implements DrawableInterface{
 
     private Class colorClass;
 
-    private DrawableParse(){}
+    private Context context;
+
+    private DrawableParse(Context context){
+        this.context=context;
+    }
 
     public static DrawableParse getInstance(Context mContext){
         if(mInstance==null){
             synchronized (DrawableParse.class){
                 if(mInstance==null){
-                    mInstance=new DrawableParse();
+                    mInstance=new DrawableParse(mContext);
                 }
             }
         }
         return mInstance;
-    }
-
-
-    public boolean needPraiseDrawable(String str){
-        return str==null||!str.startsWith("@");
     }
 
 
@@ -55,14 +57,33 @@ public class DrawableParse implements DrawableInterface{
     }
 
 
-    public Drawable parseDrawableFromColorInt(String str){
+    @Override
+    public Drawable parseDrawableColor(String str) {
         ColorDrawable colorDrawable=null;
         try {
-            colorDrawable=new ColorDrawable(Color.parseColor(str));
+            colorDrawable=new ColorDrawable();
         }catch (Exception e){
             Log.e("颜色解析错误",str);
         }
         return colorDrawable;
+    }
+
+    public int parseDrawableFromColorInt(String str){
+        try {
+           return Color.parseColor(str);
+        }catch (Exception e){
+            Log.e("颜色解析错误",str);
+        }
+        return 0;
+    }
+
+    @Override
+    public Drawable parseDrawableFile(String str) {
+        File file=new File(context.getFilesDir()+File.separator+ZFTheme.get().getTheme().themeName+File.separator+str);
+        if(file.exists()){
+            return BitmapDrawable.createFromPath(file.getAbsolutePath());
+        }
+        return null;
     }
 
     public ColorStateList parseDrawableFromColorStateList(String str){

@@ -20,7 +20,7 @@ public class SActivity extends Activity {
     }
 
     public void update(View v){
-        if(ZFTheme.get().getXml()==R.xml.theme1){
+        if(ZFTheme.get().getTheme().res==R.xml.theme1){
             ZFTheme.get().updateTheme(R.xml.theme2);
         }else{
             ZFTheme.get().updateTheme(R.xml.theme1);

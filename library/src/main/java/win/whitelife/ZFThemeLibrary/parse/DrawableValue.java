@@ -1,5 +1,7 @@
 package win.whitelife.ZFThemeLibrary.parse;
 
+import win.whitelife.ZFThemeLibrary.config.Theme;
+
 /**
  * Created by wuzefeng on 2017/9/29.
  */
@@ -10,12 +12,12 @@ public class DrawableValue {
 
     private String value;
 
-    private int xml;
+    private Theme theme;
 
     private String name;
 
-    public DrawableValue(int xml) {
-        this.xml = xml;
+    public DrawableValue(Theme theme) {
+        this.theme = theme;
     }
 
     public String getFormat() {
@@ -34,12 +36,12 @@ public class DrawableValue {
         this.value = value;
     }
 
-    public int getXml() {
-        return xml;
+    public Theme getTheme() {
+        return theme;
     }
 
-    public void setXml(int xml) {
-        this.xml = xml;
+    public void setTheme(Theme theme) {
+        this.theme = theme;
     }
 
     public String getName() {

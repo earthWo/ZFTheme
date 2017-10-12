@@ -11,11 +11,14 @@ import win.whitelife.ZFThemeLibrary.parse.ConfigInterface;
 
 public class ZFThemeConfig implements ConfigInterface {
 
-    private ZFThemeConfig(){}
+    private ZFThemeConfig(){
+        theme=new Theme();
+    }
 
     private static volatile ZFThemeConfig mInstance;
 
-    private int currentXml;
+
+    private Theme theme;
 
 
     public static ZFThemeConfig getInstance(){
@@ -30,16 +33,26 @@ public class ZFThemeConfig implements ConfigInterface {
     }
 
     public void setDefaultXml(@XmlRes int defaultXml) {
-        this.currentXml = defaultXml;
+        theme.res=defaultXml;
+        theme.type= win.whitelife.ZFThemeLibrary.config.ThemeType.RESOURSES;
     }
 
     public void setXml(@XmlRes int currentXml){
-        this.currentXml = currentXml;
+        theme.res=currentXml;
+        theme.type= win.whitelife.ZFThemeLibrary.config.ThemeType.RESOURSES;
+    }
+
+
+    @Override
+    public void setXml(String themeName) {
+        theme.themeName=themeName;
+        theme.type= win.whitelife.ZFThemeLibrary.config.ThemeType.FILE;
     }
 
     @Override
-    public int getXml() {
-        return currentXml;
+    public Theme getTheme() {
+        return theme;
     }
+
 
 }

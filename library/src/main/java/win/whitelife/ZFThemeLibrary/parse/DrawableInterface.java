@@ -14,7 +14,21 @@ public interface DrawableInterface {
      * @param str
      * @return
      */
-    Drawable parseDrawableFromColorInt(String str);
+    Drawable parseDrawableColor(String str);
+
+    /**
+     * 解析colordrawable
+     * @param str
+     * @return
+     */
+    int parseDrawableFromColorInt(String str);
+
+    /**
+     * 解析drawable file
+     * @param str
+     * @return
+     */
+    Drawable parseDrawableFile(String str);
 
     /**
      * 设置drawable class

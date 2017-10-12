@@ -16,6 +16,12 @@ public interface ThemeXmlParse {
      */
     void inflate(@XmlRes int res);
 
+    /**
+     * 解析xml
+     * @param themeName
+     */
+    void inflate( String themeName);
+
 
     /**
      * 获取item值
