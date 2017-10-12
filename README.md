@@ -9,9 +9,13 @@ ZFTheme是一款是android换主题框架。目前支持替换xml实现换肤，
 
 ### 支持四种属性变化
 zf_background:设置背景
+
 zf_image:设置image src
+
 zf_text_color:设置text color 颜色
+
 zf_text_hintColor:设置 texthint 颜色
+
 ### 使用方法：
 
 #### 导入方法
